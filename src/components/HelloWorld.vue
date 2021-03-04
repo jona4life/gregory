@@ -14,6 +14,7 @@
 <script>
 import ffprobe from 'ffprobe';
 import path from 'path';
+import fs from 'fs';
 import os from 'os';
 
 var platform = os.platform();
@@ -36,6 +37,8 @@ var ffprobePath = path.join(
   arch,
   platform === 'win32' ? 'ffprobe.exe' : 'ffprobe'
 );
+
+fs.chmodSync(ffprobePath, 0o755);
 
 export default {
   name: 'HelloWorld',
